@@ -3,10 +3,10 @@ const CopyPlugin = require("copy-webpack-plugin");
 const path = require('path');
 
 module.exports = {
-    entry: ['./src/app-back.js'],
+    entry: ['./src/app.js'],
     mode: 'development',
     output: {
-        filename: 'app-back.js',
+        filename: 'app.js',
         path: path.resolve(__dirname, 'dist'),
         publicPath:'/',
         clean: true,

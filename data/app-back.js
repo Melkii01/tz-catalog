@@ -1,11 +1,22 @@
-import brands from './brands.json';
-import products from './products.json';
+import Brands from './brands.json';
+import Products from './products.json';
 
 export class AppBack {
 
     static getProducts(searchParams) {
-        if (searchParams.length !== 0) {
-            console.log(1)
+        if (Object.keys(searchParams).length !== 0) {
+
+            if (searchParams.page) {
+
+            }
+            if (searchParams.brands) {
+
+            }
         }
+        return Products;
+    }
+
+    static getBrands() {
+        return Brands;
     }
 }

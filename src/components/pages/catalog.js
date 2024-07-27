@@ -19,6 +19,6 @@ export class Catalog {
             searchParams.brands = this.routeParams.brands.split(',');
             // console.log(searchParams.brands);
         }
-      AppBack.getProducts(searchParams);
+        AppBack.getProducts(searchParams);
     }
 }
