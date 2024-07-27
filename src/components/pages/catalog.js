@@ -20,5 +20,10 @@ export class Catalog {
             // console.log(searchParams.brands);
         }
         AppBack.getProducts(searchParams);
+        this.showPage();
+    }
+
+    showPage() {
+
     }
 }

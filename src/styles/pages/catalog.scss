@@ -1,3 +1,55 @@
-h1 {
-  background-color: gray;
+@import "../variables";
+@import "../mixins";
+
+.catalog {
+  .container {
+    .brands {
+      width: 230px;
+      box-sizing: border-box;
+
+      .brands-title {
+        text-transform: uppercase;
+        color: $black;
+        margin-bottom: 15px;
+      }
+
+      .brands-search {
+        .brands-search-input {
+          width: 100%;
+          position: relative;
+          margin-bottom: 11px;
+
+          input {
+            width: 100%;
+            padding: 15px 10px 15px 52px;
+            box-sizing: border-box;
+            border: 1px solid $medium-grey;
+            border-radius: 5px;
+            color: $black;
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+
+          .brands-search-input-icon {
+            position: absolute;
+            left: 10px;
+            top: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+
+      .brands-items {
+        .brands-item {
+          padding: 4px 0;
+          @include checkbox-custom;
+        }
+      }
+    }
+  }
 }

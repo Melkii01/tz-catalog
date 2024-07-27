@@ -1,0 +1,46 @@
+@import "variables";
+
+@mixin checkbox-custom {
+  display: flex;
+  align-items: center;
+
+  input[type='checkbox'] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid $medium-grey;
+    border-radius: 3px;
+    margin: 0 10px 0 0;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+  }
+
+  input[type='checkbox']::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    transition: .2s ease transform;
+    transform: scale(0);
+    background-color: $red;
+    border-radius: 3px;
+    //background-image: url("../assets/images/icons/checked-svg.svg");
+  }
+
+  input[type='checkbox']:checked::before {
+    transform: scale(1);
+  }
+  label {
+    font-size: 14px;
+    padding-right: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: $grey;
+
+    &:hover {
+      color: $medium-grey;
+    }
+  }
+}
