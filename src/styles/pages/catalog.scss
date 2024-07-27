@@ -171,9 +171,8 @@
         }
       }
 
-      .products-titles {
+      .products-top {
         background: $light-grey-2;
-        //display: flex;
         margin-top: 20px;
         border-radius: 8px;
         display: grid;
@@ -188,7 +187,7 @@
         }
       }
 
-      .products-item {
+      .product {
         box-shadow: 0 0 15px 7px $light-grey-2;
         display: grid;
         grid-template-columns: 2fr 13fr;
@@ -197,22 +196,18 @@
         border-radius: 8px;
         background: $white;
 
-        .products-item-image {
+        .product-image {
           height: 73px;
           justify-self: center;
-
-          img {
-
-          }
         }
 
-        .products-item-info {
-          .products-item-title {
+        .product-info {
+          .product-title {
             display: flex;
             align-items: center;
             padding: 17px 0;
 
-            .products-item-name {
+            .product-name {
               font-weight: 700;
               font-size: 13px;
               text-transform: uppercase;
@@ -220,14 +215,14 @@
               margin-right: 50px;
             }
 
-            .products-item-article {
+            .product-article {
               font-weight: 700;
               font-size: 13px;
               color: $grey;
             }
           }
 
-          .products-item-info-item {
+          .product-item {
             display: grid;
             grid-template-columns: 5fr 2fr 2fr 2fr 2fr;
             padding: 4px 0;
@@ -235,20 +230,20 @@
             font-size: 13px;
             color: $grey;
 
-            .products-item-names {
+            .product-item-names {
               padding-right: 20px;
               line-height: 100%;
             }
 
-            .products-item-delivery {
+            .product-item-delivery {
 
             }
 
-            .products-item-hasown {
+            .product-item-quantity {
 
             }
 
-            .products-item-price {
+            .product-item-price {
               font-weight: 700;
               color: $dark-grey;
 
@@ -258,7 +253,7 @@
               }
             }
 
-            .products-item-cart {
+            .product-item-cart {
               display: flex;
               align-items: center;
 
@@ -286,7 +281,100 @@
 
         }
       }
+    }
 
+    .products-more {
+      display: flex;
+      justify-content: center;
+
+      button {
+        border-radius: 8px;
+        padding: 14px 60px 16px 60px;
+        background: $blue;
+        border: 0;
+        font-family: $font-family;
+        font-size: 14px;
+        text-align: center;
+        color: $white;
+        cursor: pointer;
+        transition: all .2s;
+        margin-top: 90px;
+
+        &:hover {
+          background: $dark-blue;
+        }
+      }
+    }
+
+    .products-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 60px;
+      flex-wrap: nowrap;
+
+      .products-pagination-block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 44px;
+          height: 44px;
+          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+          background: $white;
+          border-radius: 5px;
+          font-size: 13px;
+          text-align: center;
+          color: $grey;
+          text-decoration: none;
+
+          &.active {
+            background: $blue;
+            color: $white;
+            cursor: not-allowed;
+          }
+
+          &:hover {
+            background: $light-blue;
+          }
+
+          &.active:hover {
+            background: $blue;
+          }
+        }
+      }
+
+      .arrow-right {
+        margin-left: 20px;
+        cursor: not-allowed;
+        transform: rotateZ(180deg);
+
+        &.active {
+          cursor: pointer;
+
+          svg path {
+            stroke: $blue
+          }
+        }
+      }
+
+      .arrow-left {
+        margin-right: 20px;
+        cursor: not-allowed;
+
+        &.active {
+          cursor: pointer;
+
+          svg path {
+            stroke: $blue
+          }
+        }
+      }
     }
   }
 }
