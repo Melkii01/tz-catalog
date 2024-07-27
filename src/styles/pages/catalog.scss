@@ -3,9 +3,12 @@
 
 .catalog {
   .container {
+    display: flex;
+
     .brands {
       width: 230px;
       box-sizing: border-box;
+      flex-shrink: 0;
 
       .brands-title {
         text-transform: uppercase;
@@ -26,12 +29,12 @@
             border: 1px solid $medium-grey;
             border-radius: 5px;
             color: $black;
+            font-family: $font-family;
 
             &:focus {
               outline: none;
             }
           }
-
 
           .brands-search-input-icon {
             position: absolute;
@@ -50,6 +53,240 @@
           @include checkbox-custom;
         }
       }
+    }
+
+    .products {
+      padding: 0 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+
+      .products-filter {
+        display: flex;
+        justify-content: right;
+
+        .products-filter-block {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-radius: 5px;
+          padding: 8px 15px;
+          width: 330px;
+          background: $light-grey-2;
+          color: $grey;
+          cursor: pointer;
+          position: relative;
+          box-sizing: border-box;
+          margin-bottom: 18px;
+
+          .products-filter-block-left {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            svg {
+              margin-right: 10px;
+            }
+          }
+
+          .products-filter-block-right {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .products-filter-block-hidden {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: $white;
+            box-shadow: 0 0 15px 7px $light-grey-2;
+            border-radius: 5px;
+            width: 330px;
+            color: $grey;
+            cursor: pointer;
+            box-sizing: border-box;
+
+            .products-filter-block-hidden-item {
+              width: 330px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 8px 15px;
+              box-sizing: border-box;
+
+
+              .products-filter-block-hidden-left {
+                display: flex;
+                align-items: center;
+
+                svg {
+                  margin-right: 10px;
+                }
+              }
+
+              .products-filter-block-hidden-right {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                svg {
+                  transform: rotateZ(180deg);
+                }
+              }
+
+              &:hover {
+                background: $light-grey-2;
+              }
+            }
+
+          }
+        }
+      }
+
+      .products-choose-brands {
+        display: flex;
+
+        .products-choose-brands-item {
+          border-radius: 20px;
+          padding: 5px 15px;
+          font-size: 13px;
+          color: $white;
+          background: $red;
+          display: flex;
+          box-sizing: border-box;
+          margin-right: 10px;
+          margin-bottom: 10px;
+          cursor: pointer;
+
+          span {
+            margin: 0 14px 0 7px;
+          }
+
+          .products-choose-brands-item-svg {
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+
+      .products-titles {
+        background: $light-grey-2;
+        //display: flex;
+        margin-top: 20px;
+        border-radius: 8px;
+        display: grid;
+        padding: 14px 19px;
+        grid-template-columns: 7fr  2fr 2fr 2fr 2fr;
+
+        .products-title {
+          font-family: $font-family;
+          font-weight: 400;
+          font-size: 13px;
+          color: $black;
+        }
+      }
+
+      .products-item {
+        box-shadow: 0 0 15px 7px $light-grey-2;
+        display: grid;
+        grid-template-columns: 2fr 13fr;
+        padding: 7px 19px;
+        margin-top: 15px;
+        border-radius: 8px;
+        background: $white;
+
+        .products-item-image {
+          height: 73px;
+          justify-self: center;
+
+          img {
+
+          }
+        }
+
+        .products-item-info {
+          .products-item-title {
+            display: flex;
+            align-items: center;
+            padding: 17px 0;
+
+            .products-item-name {
+              font-weight: 700;
+              font-size: 13px;
+              text-transform: uppercase;
+              color: $black;
+              margin-right: 50px;
+            }
+
+            .products-item-article {
+              font-weight: 700;
+              font-size: 13px;
+              color: $grey;
+            }
+          }
+
+          .products-item-info-item {
+            display: grid;
+            grid-template-columns: 5fr 2fr 2fr 2fr 2fr;
+            padding: 4px 0;
+            border-top: 1px solid $light-grey-2;
+            font-size: 13px;
+            color: $grey;
+
+            .products-item-names {
+              padding-right: 20px;
+              line-height: 100%;
+            }
+
+            .products-item-delivery {
+
+            }
+
+            .products-item-hasown {
+
+            }
+
+            .products-item-price {
+              font-weight: 700;
+              color: $dark-grey;
+
+              span {
+                color: $grey;
+                margin-right: 5px;
+              }
+            }
+
+            .products-item-cart {
+              display: flex;
+              align-items: center;
+
+              input {
+                width: 32px;
+                height: 26px;
+                text-align: center;
+                padding: 8px 0;
+                box-sizing: border-box;
+                margin-right: 11px;
+                border: 1px solid $grey;
+                border-radius: 3px;
+                font-family: $font-family;
+                font-size: 13px;
+                color: $grey;
+              }
+
+              a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+            }
+          }
+
+        }
+      }
+
     }
   }
 }
