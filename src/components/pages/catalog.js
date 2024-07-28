@@ -5,47 +5,51 @@ import {renderCompany} from "../../utils/render-product.utils";
 import {renderBrandUtils} from "../../utils/render-brand.utils";
 
 export class Catalog {
+    countProducts = 30;
+
     constructor() {
+        // Получаем query параметры
         this.routeParams = UrlManagerUtils.getQueryParams();
 
         this.init();
     }
 
     init() {
+        // По query параметрам устанавливаем флаг checked и показываем все бренды
         let searchParams = {};
-        if (this.routeParams.page) {
-            searchParams.page = this.routeParams.page;
-            // console.log(searchParams.page);
-        }
         if (this.routeParams.brands) {
             searchParams.brands = this.routeParams.brands.split(',');
-            // console.log(searchParams.brands);
         }
         this.brands = AppBack.getBrands(searchParams);
-        // console.log(this.brands)
         this.showBrands();
+
+        // Показать ещё
+        document.getElementById('showMoreBtn').addEventListener('click',()=>this.showProducts(true));
     }
 
+    // Показать бренды
     showBrands() {
         const brandsElement = document.getElementById('brands-items');
-        console.log(this.brands)
-
         this.brands.forEach((brand) => {
-            // console.log(brand)
-
             brandsElement.insertAdjacentHTML('beforeend', renderBrandUtils(brand));
-
-        })
-
+        });
         this.showProducts();
     }
 
-    showProducts() {
-        // console.log(AppBack.getProducts());
+    // Показать продукты к выбранным брендам
+    showProducts(showMore = false) {
         const productsElement = document.getElementById('products');
 
-        AppBack.getProducts().forEach((product) => {
-            productsElement.insertAdjacentHTML('beforeend', renderCompany(product));
-        })
+        // При 'показать ещё' получаем дополнительные данные
+        if (!showMore) {
+            AppBack.getProducts(this.countProducts).forEach((product) => {
+                productsElement.insertAdjacentHTML('beforeend', renderCompany(product));
+            });
+        } else {
+            this.countProducts += 30;
+            AppBack.getProducts(this.countProducts).forEach((product) => {
+                productsElement.insertAdjacentHTML('beforeend', renderCompany(product));
+            });
+        }
     }
 }

@@ -20,8 +20,8 @@ export function renderCompany(company) {
     }
 
     return `<div class="product">
-               <div class="product-image">
-                        <img src="` + c.img + `" alt="Image">
+               <div class="product-image" style="background-image: url(` + c.img + `);">
+                        
                </div>
 
                <div class="product-info">

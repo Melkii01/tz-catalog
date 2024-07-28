@@ -24,8 +24,9 @@ export class AppBack {
         });
     }
 
-    static getProducts() {
-        return ProductsData.slice(0, 30);
+    static getProducts(n) {
+        let countBefore = n - 30;
+        return ProductsData.slice(countBefore, n);
     }
 
 }
