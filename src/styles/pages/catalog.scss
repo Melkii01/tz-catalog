@@ -72,7 +72,7 @@
       }
     }
 
-    .products {
+    .products-block {
       padding: 0 15px;
       flex-grow: 1;
       display: flex;
@@ -250,19 +250,25 @@
             .product-item-names {
               padding-right: 20px;
               line-height: 100%;
+              display: flex;
+              align-items: center;
             }
 
             .product-item-delivery {
-
+              display: flex;
+              align-items: center;
             }
 
             .product-item-quantity {
-
+              display: flex;
+              align-items: center;
             }
 
             .product-item-price {
               font-weight: 700;
               color: $dark-grey;
+              display: flex;
+              align-items: center;
 
               span {
                 color: $grey;

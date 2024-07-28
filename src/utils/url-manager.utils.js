@@ -1,4 +1,4 @@
-export class UrlManager {
+export class UrlManagerUtils {
     static getQueryParams() {
         const qs = document.location.href.split('+').join(' ');
         let params = {},

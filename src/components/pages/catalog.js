@@ -1,11 +1,11 @@
 import '../../styles/pages/catalog.scss';
-import {UrlManager} from "../../utils/url-manager";
+import {UrlManagerUtils} from "../../utils/url-manager.utils";
 import {AppBack} from "../../../data/app-back";
-import {Router} from "../../router";
+import {renderCompany, renderProductUtils} from "../../utils/render-product.utils";
 
 export class Catalog {
     constructor() {
-        this.routeParams = UrlManager.getQueryParams();
+        this.routeParams = UrlManagerUtils.getQueryParams();
 
         this.init();
     }
@@ -100,18 +100,18 @@ export class Catalog {
                 });
 
                 brandsItemsElement.appendChild(brandElement);
-
             }
         })
+
         this.showProducts();
     }
 
     showProducts() {
         console.log(AppBack.getProducts());
+        const productsElement = document.getElementById('products');
+
         AppBack.getProducts().forEach((product) => {
-
+            productsElement.insertAdjacentHTML('beforeend',renderCompany(product));
         })
-
-
     }
 }
