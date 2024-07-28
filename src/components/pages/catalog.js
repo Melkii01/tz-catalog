@@ -31,12 +31,7 @@ export class Catalog {
     showBrands() {
         const brandsElement = document.getElementById('brands-items');
         this.brands.forEach((brand) => {
-            brandsElement.insertAdjacentHTML('beforeend', renderBrandUtils(brand, this.routeParams.brands));
-            // document.getElementById(`brand${brand.brand_id}`).addEventListener('change', function () {
-            //     const checkedBrand = this.id.split('brand')[1];
-            //     console.log(checkedBrand)
-            // });
-
+            brandsElement.insertAdjacentHTML('beforeend', renderBrandUtils(brand, this.routeParams.brands))
         });
         this.showProducts();
     }
@@ -47,12 +42,25 @@ export class Catalog {
 
         // При 'показать ещё' получаем дополнительные данные
         if (!showMore) {
-            AppBack.getProducts(this.countProducts).forEach((product) => {
-                productsElement.insertAdjacentHTML('beforeend', renderCompany(product));
-            });
+            if (this.routeParams.brands) {
+                this.routeParams.brands.split(',').forEach(brand_id => {
+                    AppBack.getProducts(this.countProducts).forEach((product) => {
+                        if (brand_id === product.brand_id) {
+                            productsElement.insertAdjacentHTML('beforeend', renderCompany(product));
+                        }
+                    });
+                })
+            } else {
+                AppBack.getProducts(this.countProducts).forEach((product) => {
+                    productsElement.insertAdjacentHTML('beforeend', renderCompany(product));
+                });
+            }
+
+
         } else {
             this.countProducts += 30;
             AppBack.getProducts(this.countProducts).forEach((product) => {
+
                 productsElement.insertAdjacentHTML('beforeend', renderCompany(product));
             });
         }

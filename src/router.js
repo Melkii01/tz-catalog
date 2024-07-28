@@ -24,6 +24,7 @@ export class Router {
     // Слушатель всего сайта
     initEvents() {
         window.addEventListener("DOMContentLoaded", this.activateRoute.bind(this));
+        window.addEventListener("popstate", this.activateRoute.bind(this));
     }
 
     // Активация страницы по url
