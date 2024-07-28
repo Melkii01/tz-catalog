@@ -289,8 +289,25 @@
                 position: relative;
                 align-items: center;
                 display: flex;
-                margin-right: 11px;
+                transition: .2s;
+                padding: 3px 5px;
 
+                &:hover {
+                  border-radius: 4px;
+                  box-shadow: 0 0 transparent, 0 0 transparent, 0 0 20px rgba(0, 0, 0, .12);
+                }
+
+                &:hover .product-item-cart-input-decrease {
+                  visibility: unset;
+                }
+
+                &:hover .product-item-cart-input-increase {
+                  visibility: unset;
+                }
+
+                &:hover input {
+                  border: 0;
+                }
 
                 .product-item-cart-input-decrease {
                   background-image: url("../../assets/images/icons/minus.svg");
@@ -300,12 +317,17 @@
                   background-repeat: no-repeat;
                   background-size: contain;
                   padding: 0;
+                  margin: 0 2px 0 0;
                   box-shadow: none;
                   background-color: $white;
                   border: 0;
                   cursor: pointer;
-                  margin: 0 2px 0 0;
-                  display: none;
+                  visibility:hidden;
+                  opacity: .8;
+
+                  &:hover {
+                    opacity: 1;
+                  }
                 }
 
                 .product-item-cart-input-increase {
@@ -321,7 +343,12 @@
                   background-color: $white;
                   border: 0;
                   cursor: pointer;
-                  display: none;
+                  visibility:hidden;
+                  opacity: .8;
+
+                  &:hover {
+                    opacity: 1;
+                  }
                 }
 
                 input {
@@ -336,24 +363,6 @@
                   color: $grey;
                   border: 1px solid $grey;
                   outline-color: transparent;
-                }
-
-                &:hover {
-                  border-radius: 4px;
-                  box-shadow: 0 0 transparent, 0 0 transparent, 0 0 20px rgba(0, 0, 0, .12);
-                  padding: 5px;
-                }
-
-                &:hover .product-item-cart-input-decrease {
-                  display: block;
-                }
-
-                &:hover .product-item-cart-input-increase {
-                  display: block;
-                }
-
-                &:hover input {
-                  border: 0;
                 }
               }
 
