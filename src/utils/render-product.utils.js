@@ -1,23 +1,27 @@
 export function renderCompany(company) {
     const c = {
         brand_name: 'Неизвестный',
-        articul: '-'
+        articul: '-',
+        variants: {},
+        img: './assets/images/example.png'
     };
 
     if (company.brand_name) {
         c.brand_name = company.brand_name;
     }
-
     if (company.articul) {
         c.articul = company.articul;
     }
     if (company.variants) {
         c.variants = company.variants;
     }
+    if (company.img) {
+        c.img = company.img;
+    }
 
     return `<div class="product">
                <div class="product-image">
-                        <img src="../../assets/images/example.png" alt="Image">
+                        <img src="` + c.img + `" alt="Image">
                </div>
 
                <div class="product-info">
@@ -25,12 +29,12 @@ export function renderCompany(company) {
                             <div class="product-name">` + c.brand_name + `</div>
                             <div class="product-article">` + c.articul + `</div>
                     </div>`
-            + c.variants.map((product) => renderProductItem(product)).join(' ')
-            + ` </div>
+        + c.variants.map((product) => renderProduct(product)).join(' ')
+        + ` </div>
             </div>`;
 }
 
-function renderProductItem(product) {
+function renderProduct(product) {
     const p = {
         name: '-',
         delivery: '-',

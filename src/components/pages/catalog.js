@@ -1,7 +1,8 @@
 import '../../styles/pages/catalog.scss';
 import {UrlManagerUtils} from "../../utils/url-manager.utils";
 import {AppBack} from "../../../data/app-back";
-import {renderCompany, renderProductUtils} from "../../utils/render-product.utils";
+import {renderCompany} from "../../utils/render-product.utils";
+import {renderBrandUtils} from "../../utils/render-brand.utils";
 
 export class Catalog {
     constructor() {
@@ -26,92 +27,25 @@ export class Catalog {
     }
 
     showBrands() {
-        const brandsItemsElement = document.getElementById('brands-items');
+        const brandsElement = document.getElementById('brands-items');
+        console.log(this.brands)
 
         this.brands.forEach((brand) => {
             // console.log(brand)
-            if (brand && brand.brand_id && brand.brand_name) {
-                const brandElement = document.createElement('div');
-                brandElement.className = 'brands-item';
 
-                const brandLabelElement = document.createElement('label');
-                brandLabelElement.setAttribute("for", 'brand' + brand.brand_id);
-                brandElement.appendChild(brandLabelElement);
+            brandsElement.insertAdjacentHTML('beforeend', renderBrandUtils(brand));
 
-                const brandInputElement = document.createElement('input');
-                brandInputElement.setAttribute("type", 'checkbox');
-                brandInputElement.setAttribute("id", 'brand' + brand.brand_id);
-
-                if (this.routeParams.brands) {
-                    this.routeParams.brands.split(',').find((item) => {
-                        if (brand.brand_id === item) {
-                            brandInputElement.setAttribute("checked", 'checked');
-                        }
-                    })
-                }
-                brandLabelElement.appendChild(brandInputElement);
-
-                const brandLabelTextElement = document.createElement('div');
-                brandLabelTextElement.innerText = brand.brand_name;
-                brandLabelElement.appendChild(brandLabelTextElement);
-
-                const that = this;
-                brandInputElement.addEventListener('change', function () {
-                    const checkedBrand = this.id.split('brand')[1];
-                    // console.log(that.routeParams.brands)
-
-                    // let checkedBrands = [...that.routeParams.brands];
-                    if (this.checked) {
-                        //     checkedBrands.push(checkedBrand)
-                        //     console.log(checkedBrands)
-                        console.log("Checkbox is checked..");
-                        // console.log(that.routeParams)
-                        // console.log(that.routeParams.brands)
-                        // if (checkedBrands.length >= 1) {
-                        // console.log(that.routeParams.brands)
-                        // that.routeParams.brands.split(',').push(checkedBrand)
-                        // console.log("push");
-                        // console.log(that.routeParams.brands)
-                        // let page = null;
-                        // if (that.routeParams.page) {
-                        //     page = that.routeParams.page;
-                        //
-                        //     location.href = '/' + '?page=' + page + '&brands=' + that.routeParams.brands.join(',');
-                        // }
-                        // location.href = '/' + '?brands=' + that.routeParams.brands.join(',');
-                        // } else {
-                        //
-                        // that.routeParams.brands = Array(checkedBrand);
-                        // console.log("create");
-                        // console.log(that.routeParams.brands)
-                        // // Router.activateRoute.bind(this)
-                        // let page = null;
-                        // if (that.routeParams.page) {
-                        //     page = that.routeParams.page;
-                        //     location.href = '/' + '?page=' + page + '&brands=' + that.routeParams.brands;
-                        // }
-                        // location.href = '/' + '?brands=' + that.routeParams.brands;
-
-                        // }
-
-                    } else {
-                        console.log("Checkbox is not checked..");
-                    }
-                });
-
-                brandsItemsElement.appendChild(brandElement);
-            }
         })
 
         this.showProducts();
     }
 
     showProducts() {
-        console.log(AppBack.getProducts());
+        // console.log(AppBack.getProducts());
         const productsElement = document.getElementById('products');
 
         AppBack.getProducts().forEach((product) => {
-            productsElement.insertAdjacentHTML('beforeend',renderCompany(product));
+            productsElement.insertAdjacentHTML('beforeend', renderCompany(product));
         })
     }
 }

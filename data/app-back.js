@@ -17,14 +17,19 @@ export class AppBack {
         //
         //     return brands;
         // }
-        return BrandsData.filter(brand => brand.brand_id && brand.brand_name);
+        return BrandsData.filter(brand => brand.brand_id && brand.brand_name).sort(function IHaveAName(a, b) {
+            return b.brand_name < a.brand_name ? 1
+                : b.brand_name > a.brand_name ? -1
+                    : 0;
+        });
     }
 
-    static getProducts(){
+    static getProducts() {
         return ProductsData.slice(0, 30);
     }
 
 }
+
 // brands.push(BrandsData.filter(brand => {
 //     if (Number(brand.brand_id) === Number(brandUrl)
 //         && brand.brand_id && brand.brand_name) {
