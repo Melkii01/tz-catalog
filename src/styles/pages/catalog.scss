@@ -48,6 +48,23 @@
       }
 
       .brands-items {
+        height: 382px;
+        overflow-x: hidden;
+
+        &::-webkit-scrollbar {
+          width: 7px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background-color: $light-grey;
+          border-radius: 8px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: $medium-grey;
+          border-radius: 8px;
+        }
+
         .brands-item {
           padding: 4px 0;
           @include checkbox-custom;
