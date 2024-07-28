@@ -20,18 +20,18 @@ export function renderCompany(company) {
     }
 
     return `<div class="product">
-               <div class="product-image" style="background-image: url(` + c.img + `);">
+               <div class="product-image" style="background-image: url(${c.img});">
                         
                </div>
 
                <div class="product-info">
                     <div class="product-title">
-                            <div class="product-name">` + c.brand_name + `</div>
-                            <div class="product-article">` + c.articul + `</div>
-                    </div>`
-        + c.variants.map((product) => renderProduct(product)).join(' ')
-        + ` </div>
-            </div>`;
+                            <div class="product-name">${c.brand_name}</div>
+                            <div class="product-article">${c.articul}</div>
+                    </div>
+                     ${c.variants.map((product) => renderProduct(product)).join(' ')}
+               </div>
+           </div>`;
 }
 
 function renderProduct(product) {
@@ -57,19 +57,14 @@ function renderProduct(product) {
     }
 
     return `<div class="product-item">
-                <div class="product-item-names">
-                    ` + p.name + `
-                </div>
-                <div class="product-item-delivery">
-                    ` + p.delivery + `
-                </div>
+                <div class="product-item-names">${p.name}</div>
+                
+                <div class="product-item-delivery">${p.delivery}</div>
 
-                <div class="product-item-quantity">
-                    ` + p.stock + `
-                </div>
+                <div class="product-item-quantity">${p.stock}</div>
 
                 <div class="product-item-price">
-                     <span>` + p.price + `</span>₽
+                     <span>${p.price}</span>₽
                 </div>
 
                 <div class="product-item-cart">

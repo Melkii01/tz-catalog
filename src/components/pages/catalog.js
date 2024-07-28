@@ -24,14 +24,19 @@ export class Catalog {
         this.showBrands();
 
         // Показать ещё
-        document.getElementById('showMoreBtn').addEventListener('click',()=>this.showProducts(true));
+        document.getElementById('showMoreBtn').addEventListener('click', () => this.showProducts(true));
     }
 
     // Показать бренды
     showBrands() {
         const brandsElement = document.getElementById('brands-items');
         this.brands.forEach((brand) => {
-            brandsElement.insertAdjacentHTML('beforeend', renderBrandUtils(brand));
+            brandsElement.insertAdjacentHTML('beforeend', renderBrandUtils(brand, this.routeParams.brands));
+            // document.getElementById(`brand${brand.brand_id}`).addEventListener('change', function () {
+            //     const checkedBrand = this.id.split('brand')[1];
+            //     console.log(checkedBrand)
+            // });
+
         });
         this.showProducts();
     }

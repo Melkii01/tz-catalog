@@ -1,15 +1,16 @@
-export function renderBrandUtils(brand) {
+export function renderBrandUtils(brand, urlBrands) {
+    let checked = '';
+    if (urlBrands) {
+        urlBrands.split(',').find((item) => {
+            if (item === brand.brand_id) {
+                checked = 'checked';
+            }
+        })
+    }
 
-    // if (this.routeParams.brands) {
-    //     this.routeParams.brands.split(',').find((item) => {
-    //         if (brand.brand_id === item) {
-    //             brandInputElement.setAttribute("checked", 'checked');
-    //         }
-    //     })
-    // }
-    // brand.addEventListener('change', function () {
+    // document.getElementById(`brand${brand.brand_id}`).addEventListener('change', function () {
     //     const checkedBrand = this.id.split('brand')[1];
-    //     // console.log(that.routeParams.brands)
+    //     console.log(checkedBrand)
     //
     //     // let checkedBrands = [...that.routeParams.brands];
     //     if (this.checked) {
@@ -50,10 +51,19 @@ export function renderBrandUtils(brand) {
     //     }
     // });
 
+    // const a = () => {
+    //     console.log("Checkbox is not checked..");
+    // }
+
     return `<div class="brands-item">
-                 <label for="brand`+brand.brand_id+`">
-                     <input type="checkbox" id="brand`+brand.brand_id+`">
-                     `+brand.brand_name+`
+                 <label for="brand${brand.brand_id}" >
+                     <input type="checkbox" id="brand${brand.brand_id}" ${checked} >
+                     ${brand.brand_name}
                  </label>
-            </div>`
+            </div>`;
 }
+//
+// export function a(){
+//     console.log("Checkbox is not checked..");
+// }
+
