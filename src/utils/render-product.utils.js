@@ -68,7 +68,12 @@ function renderProduct(product) {
                 </div>
 
                 <div class="product-item-cart">
-                     <input type="text" value="1">
+                     <div class="product-item-cart-input">
+                          <button class="product-item-cart-input-decrease" type="button"></button>
+                          <input type="text" value="1">
+                          <button class="product-item-cart-input-increase" type="button"></button>
+                     </div>
+                     
                           <a href="#">
                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
