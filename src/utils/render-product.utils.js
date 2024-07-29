@@ -58,14 +58,21 @@ function renderProduct(product) {
     return `<div class="product-item">
                 <div class="product-item-names">${p.name}</div>
                 
-                <div class="product-item-delivery">${p.delivery}</div>
+                <div class="product-item-title">Доставка</div>
+                <div class="product-item-delivery">${p.delivery} дней</div>
+                <div class="product-item-title"></div>
 
-                <div class="product-item-quantity">${p.stock}</div>
+                <div class="product-item-title product-item-title-quantity">Наличие</div>
+                <div class="product-item-quantity">${p.stock} шт.</div>
+                <div class="product-item-title"></div>
 
+                <div class="product-item-title product-item-title-price">Цена за ед.</div>
                 <div class="product-item-price">
                      <span>${p.price}</span>₽
                 </div>
+                <div class="product-item-title"></div>
 
+                <div class="product-item-title product-item-title-cart">Кратность</div>
                 <div class="product-item-cart">
                      <div class="product-item-cart-input">
                           <button class="product-item-cart-input-decrease" type="button"></button>
@@ -73,7 +80,7 @@ function renderProduct(product) {
                           <button class="product-item-cart-input-increase" type="button"></button>
                      </div>
                      
-                          <a href="#">
+                     <a href="#">
                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                <path d="M8.79134 20.2075L6.48966 3.89453H3.125M7.25268 9.22637H27.5579C28.2192 9.22637 28.6984 9.85682 28.5214 10.494L25.7099 20.6155C25.45 21.5513 24.5979 22.1989 23.6267 22.1989H10.937C9.85782 22.1989 8.9439 21.4032 8.79544 20.3343L7.25268 9.22637Z"
@@ -83,7 +90,8 @@ function renderProduct(product) {
                                <path d="M24.9008 26.5296C24.9008 27.4002 24.195 28.106 23.3243 28.106C22.4537 28.106 21.7479 27.4002 21.7479 26.5296C21.7479 25.6589 22.4537 24.9531 23.3243 24.9531C24.195 24.9531 24.9008 25.6589 24.9008 26.5296Z"
                                               fill="#727271"/>
                                </svg>
-                          </a>
+                     </a>
                 </div>
+                <div class="product-item-hidden"></div>
            </div>`;
 }
